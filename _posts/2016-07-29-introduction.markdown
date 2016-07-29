@@ -10,4 +10,4 @@ Hello, and welcome to my first post. My name is Tyler Bugbee and I'm a third-yea
 
 My current interests are machine learning, predictive analytics, large-scale data problems, and parallel and distributed computing.
 
-You can find me at [GitHub](https://github.com/tbarc), [LinkedIn](Public Profilehttps://www.linkedin.com/in/tylerbugbee), and [Gmail](mailto:tbugbee1@gmail.com). Feel free to contact me directly!
+You can find me at [GitHub](https://github.com/tbarc), [LinkedIn](https://www.linkedin.com/in/tylerbugbee), and [Gmail](mailto:tbugbee1@gmail.com). Feel free to contact me directly!
