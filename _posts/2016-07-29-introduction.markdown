@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 date: '2016-07-27 03:33:00 -0400'
 categories: personal
