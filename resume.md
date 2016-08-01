@@ -3,6 +3,6 @@ layout: page
 title: Resume
 permalink: /Resume/
 ---
-## Tyler Bugbee#
+
 
 
