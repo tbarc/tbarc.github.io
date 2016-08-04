@@ -1,6 +1,7 @@
 ---
+published: false
 layout: page
-title: About
+title: About Jekyll
 permalink: /about/
 ---
 
