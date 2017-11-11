@@ -113,5 +113,7 @@ When a process tries to access a page that was not brought into memory - access 
 * dirty means it is a write and it is not a tlb_hit
 * initially assign the pages to frames from frame 0 to whatever in rising order, and then the page replacement algorithm handles any further assignments
 * return value of the pagefault_handler is the frame number  
-* physicalAddr = (frameNo >> 8) + offset; (?????)
+* physicalAddr = (frameNo >> 8) + offset;
 * int tlbid = pageNo % (TLB_ENTRY/2);
+* use valid bits on tlb to determine if it is still in memory, just like page table
+* use disk_read on pagefault
