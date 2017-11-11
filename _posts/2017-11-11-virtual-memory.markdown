@@ -1,3 +1,9 @@
+---
+layout: post
+title: Notes on Virtual Memory
+date: '2017-11-11 08:00:00 -0400'
+published: true
+---
 # Virtual memory notes
 ---
 ## Paging
