@@ -107,7 +107,7 @@ When a process tries to access a page that was not brought into memory - access 
   4. We schedule a disk operation to read the desired page into the newly allocated frame
   5. When the disk read is complete, we modify the internal table kept with the process and the page table to indicate that the page is now in memory
 
-## Groupme notes
+<!-- ## Groupme notes
 * use disk_write on victim pages when they are replaced by new pages taking the same frame, only if they are dirty.
 * only write when it's diry, and we only write when we're invalidating an old page that is being replaced
 * dirty means it is a write and it is not a tlb_hit
@@ -116,4 +116,4 @@ When a process tries to access a page that was not brought into memory - access 
 * physicalAddr = (frameNo >> 8) + offset;
 * int tlbid = pageNo % (TLB_ENTRY/2);
 * use valid bits on tlb to determine if it is still in memory, just like page table
-* use disk_read on pagefault
+* use disk_read on pagefault -->
