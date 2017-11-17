@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Small Sat Lab - Day in the Life Testing Overview
-date: '2016-11-16 17:30:00 -0400'
+date: '2017-11-16 17:30:00 -0400'
 categories: personal
 published: true
 ---
