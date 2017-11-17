@@ -6,7 +6,7 @@ categories: personal
 published: true
 ---
 ## Section 1: Testing
-* prove that we're
+* prove that we're converging towards final goal using flatsat
 * "maturing the design" - ground segment
   * why do we think we're capable of doing this?
 * showing ambition
@@ -14,13 +14,3 @@ published: true
 * states - show how current state infers next state
   * ex: rPi represents obc, tx1 represents tx2,
 * introduction: thought behind what we need to do: short, reference some documents, the fact that we want to show evidence
-
-
-## Section 1: system diagrams
-## System functions:
-## How that maps to modes
-## Section 2: component diagrams
-## component functions
-## how it maps to modes
-
-* converging towards final goal using flatsat
