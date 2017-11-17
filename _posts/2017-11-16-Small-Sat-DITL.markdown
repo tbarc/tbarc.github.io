@@ -2,9 +2,10 @@
 layout: post
 title: Small Sat Lab - Day in the Life Testing Overview
 date: '2016-11-16 17:30:00 -0400'
-categories: jekyll update
+categories: personal
 published: true
 ---
+## Section 1: Testing
 * prove that we're
 * "maturing the design" - ground segment
   * why do we think we're capable of doing this?
