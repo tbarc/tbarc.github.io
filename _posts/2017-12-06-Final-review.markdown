@@ -60,7 +60,7 @@ If we have the following requests from a program:
 * Divides logical memory into blocks of the same size called Pages
 * To run a program of size N pages, we need to find N free frames and load the program
 * We set up a page table to translate logical to physical addresses
-* For additional virtual memory notes, see [notes on virtual memory]({{ tbarc.github.io }}/_posts/2017-11-11-virtual-memory.markdown)
+* For additional virtual memory notes, see [notes on virtual memory]({{ tbarc.github.io }}/2017/11/11/virtual-memory.html)
 
 #### Kernel Memory Allocation: Buddy system, Slab
 **Buddy System**
@@ -81,4 +81,12 @@ If we have the following requests from a program:
 * Cache consists of one or more slabs
 * Single cache for each unique kernel data structure
   * Each cache filled with objects - instantiations of the data structure
-* 
+* When cache is created, it is filled with objects marked as free
+* When structures are stored, objects are marked as used
+* If the slab is full of used objects, the next object is allocated from the empty slab
+  * If there are no empty slabs, a new slab is allocated
+* Benefits include no fragmentation, fast memory request satisfaction
+
+## Storage and File System (Ch. 10, 11, 12)
+
+#### RAID System: Parity and Hamming
