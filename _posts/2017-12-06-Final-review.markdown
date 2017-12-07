@@ -39,10 +39,10 @@ Memory-management scheme which organizes a program into a collection of segments
   * limit - specifies the length of the segment
 * Because segments vary in length, memory allocation is a dynamic storage-allocation problem
 * For example, consider the following table:  
-| Base | Bound | Access Permissions |
-| :---: | :---: | :---: |
-| 1000 | 200 | R |
-| 4000 | 1521 | RW |
+| Base | Bound | Access Permissions |  
+| :---: | :---: | :---: |  
+| 1000 | 200 | R |  
+| 4000 | 1521 | RW |  
 | 9000 | 400 | RW |  
 If we have the following requests from a program:
 1. Read (seg 0, offset 150) = legal read of segment 0 at address 1150 (Base = 1000 + offset (150))
