@@ -31,7 +31,7 @@ Memory-management scheme which organizes a program into a collection of segments
 * Processes can share segments
   * Same start address, length, same/different access permissions
 * A logical address consists of a two-tuple:  
-```
+```  
 <segment-number, offset>  
 ```  
 * Segment table - maps two-dimensional physical addresses; each table entry has:
@@ -40,7 +40,7 @@ Memory-management scheme which organizes a program into a collection of segments
 * Because segments vary in length, memory allocation is a dynamic storage-allocation problem
 * For example, consider the following table:  
 | Base | Bound | Access Permissions |  
-| :---: | :---: | :---: |  
+| --- | --- | --- |  
 | 1000 | 200 | R |  
 | 4000 | 1521 | RW |  
 | 9000 | 400 | RW |  
