@@ -10,7 +10,7 @@ title: Tyler Bugbee
 email: tbugbee1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This blog serves as an ongoing portfolio for my various projects, research interests,
-  and academics. Please feel free to contact me directly - email is best.
+  and academics. Please feel free to contact me directly - email is best. julie is short.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.tylerbugbee.com" # the base hostname & protocol for your site
 github_username:  tbarc
