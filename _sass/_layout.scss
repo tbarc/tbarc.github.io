@@ -10,14 +10,15 @@
     background: var(--bg-elevated);
 }
 
+.site-header .wrapper {
+    position: relative;
+    min-height: 74px;
+}
+
 .site-title {
     font-size: clamp(1.1rem, 1.2vw, 1.25rem);
     font-weight: 700;
     line-height: 74px;
-
-    .home-section-body {
-        margin-top: 20px;
-    }
     letter-spacing: -0.02em;
     margin-bottom: 0;
     float: left;
@@ -32,6 +33,7 @@
     float: right;
     position: relative;
     line-height: 74px;
+    margin-right: 120px;
 
     .nav-toggle {
         position: absolute;
@@ -72,6 +74,7 @@
     @include media-query($on-tablet) {
         line-height: 1;
         margin-top: 18px;
+        margin-right: 0;
 
         .menu-icon {
             display: inline-flex;
@@ -127,6 +130,336 @@
         .nav-toggle:checked + .menu-icon + .trigger {
             display: flex;
         }
+    }
+}
+
+.theme-mode-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 80;
+}
+
+.theme-mode-label {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.theme-mode-button {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    color: var(--text);
+    padding: 7px 10px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    min-width: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base),
+        transform var(--transition-fast), background var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--brand);
+        box-shadow: var(--shadow-soft);
+        background: var(--surface-soft);
+        transform: translateY(-1px);
+    }
+}
+
+.theme-mode-current {
+    font-weight: 600;
+}
+
+.theme-mode-chevron {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-mode-button[aria-expanded="true"] .theme-mode-chevron {
+    transform: rotate(180deg);
+    color: var(--brand);
+}
+
+.theme-mode-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 126px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-soft);
+    padding: 6px;
+    display: grid;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast),
+        visibility var(--transition-fast);
+    z-index: 90;
+}
+
+.theme-mode-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.theme-mode-option {
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    padding: 7px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+        background: var(--surface-soft);
+        color: var(--brand);
+    }
+}
+
+.theme-mode-option.is-active {
+    background: var(--surface-soft);
+    color: var(--brand);
+    font-weight: 600;
+}
+
+@include media-query($on-tablet) {
+    .theme-mode-control {
+        top: 18px;
+        right: 48px;
+        transform: none;
+    }
+
+    .theme-mode-label {
+        display: none;
+    }
+
+    .theme-mode-button {
+        min-width: 94px;
+        font-size: 0.82rem;
+        padding: 6px 8px;
+    }
+
+    .theme-mode-menu {
+        min-width: 112px;
+        top: calc(100% + 6px);
+    }
+}
+
+@property --party-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes party-ribbon-spin {
+    from {
+        --party-angle: 0deg;
+    }
+    to {
+        --party-angle: 360deg;
+    }
+}
+
+body.party-mode .hero,
+body.party-mode .section-card,
+body.party-mode .post,
+body.party-mode .highlight,
+body.party-mode .post-list > li,
+body.party-mode .archive-list li,
+body.party-mode .theme-mode-button {
+    position: relative;
+    isolation: isolate;
+    border-color: transparent;
+}
+
+body.party-mode .theme-mode-menu {
+    isolation: isolate;
+    border-color: transparent;
+}
+
+body.party-mode .hero::before,
+body.party-mode .section-card::before,
+body.party-mode .post::before,
+body.party-mode .highlight::before,
+body.party-mode .post-list > li::before,
+body.party-mode .archive-list li::before,
+body.party-mode .theme-mode-button::before,
+body.party-mode .theme-mode-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2.4px;
+    --party-angle: 0deg;
+    background: conic-gradient(
+        from var(--party-angle),
+        #ff003c,
+        #ff8a00,
+        #ffe600,
+        #00ff99,
+        #00ccff,
+        #7a5cff,
+        #ff00d4,
+        #ff003c
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: party-ribbon-spin 2.4s linear infinite;
+    will-change: background;
+    pointer-events: none;
+}
+
+body.party-mode .hero::after,
+body.party-mode .section-card::after,
+body.party-mode .post::after,
+body.party-mode .highlight::after,
+body.party-mode .post-list > li::after,
+body.party-mode .archive-list li::after,
+body.party-mode .theme-mode-button::after,
+body.party-mode .theme-mode-menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 16px rgba(255, 0, 214, 0.18), 0 0 32px rgba(0, 213, 255, 0.14);
+    filter: blur(0.6px);
+    opacity: 0.92;
+    pointer-events: none;
+}
+
+body.party-mode .post-list > li {
+    --party-angle: 0deg;
+    border: 2.4px solid transparent;
+    background:
+        linear-gradient(var(--party-card-fill), var(--party-card-fill)) padding-box,
+        conic-gradient(
+            from var(--party-angle),
+            #ff003c,
+            #ff8a00,
+            #ffe600,
+            #00ff99,
+            #00ccff,
+            #7a5cff,
+            #ff00d4,
+            #ff003c
+        ) border-box;
+    animation: party-ribbon-spin 2.4s linear infinite;
+}
+
+body.party-mode .post-list > li::before,
+body.party-mode .post-list > li::after {
+    display: none;
+}
+
+.party-warning-modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(5, 10, 22, 0.64);
+    backdrop-filter: blur(4px);
+    z-index: 120;
+    padding: 16px;
+    animation: party-modal-fade 180ms ease-out;
+}
+
+.party-warning-modal[hidden] {
+    display: none;
+}
+
+.party-warning-dialog {
+    width: min(520px, 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-soft);
+    padding: clamp(18px, 2.4vw, 28px);
+    animation: party-modal-pop 220ms ease-out;
+
+    h2 {
+        margin-bottom: 10px;
+        font-size: clamp(1.35rem, 2vw, 1.65rem);
+    }
+
+    p {
+        color: var(--text-muted);
+        margin-bottom: 10px;
+    }
+}
+
+.party-warning-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.party-warning-button {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    color: var(--text);
+    padding: 9px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast),
+        transform var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--brand);
+        background: var(--surface-soft);
+        transform: translateY(-1px);
+    }
+}
+
+.party-warning-button.primary {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+}
+
+@keyframes party-modal-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes party-modal-pop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 

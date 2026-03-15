@@ -15,6 +15,23 @@
 
     {% include footer.html %}
 
+    <div id="party-warning-modal" class="party-warning-modal" hidden>
+      <div class="party-warning-dialog" role="dialog" aria-modal="true" aria-labelledby="party-warning-title">
+        <h2 id="party-warning-title">⚠️ Epilepsy Warning</h2>
+        <p>
+          Party Mode uses animated, color-cycling visual effects that may trigger seizures
+          for people with photosensitive epilepsy.
+        </p>
+        <p>Only continue if you understand this risk and want to enable Party Mode.</p>
+        <div class="party-warning-actions">
+          <button type="button" id="party-warning-cancel" class="party-warning-button">Cancel</button>
+          <button type="button" id="party-warning-accept" class="party-warning-button primary">I Understand</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ '/assets/js/theme-switcher.js' | prepend: site.baseurl }}"></script>
+
   </body>
 
 </html>
