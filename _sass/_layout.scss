@@ -71,6 +71,11 @@
             transform: translateY(-1px);
             text-decoration: none;
         }
+
+        &.is-active {
+            color: var(--text);
+            border-bottom-color: var(--brand);
+        }
     }
 
     @include media-query($on-tablet) {
@@ -102,13 +107,23 @@
                 transform: translateY(-1px);
             }
 
-            > svg {
-                width: 18px;
-                height: 15px;
+            .menu-icon-bars {
+                width: 16px;
+                height: 12px;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
 
-                path {
-                    fill: var(--text);
-                }
+            .menu-icon-bar {
+                display: block;
+                width: 100%;
+                height: 2px;
+                border-radius: 999px;
+                background: var(--text);
+                transform-origin: center;
+                transition: transform var(--transition-fast), opacity var(--transition-fast),
+                    background var(--transition-fast);
             }
         }
 
@@ -151,6 +166,12 @@
                 transform: none;
                 background: var(--surface-soft);
             }
+
+            &.is-active {
+                background: var(--surface-soft);
+                color: var(--brand);
+                font-weight: 600;
+            }
         }
 
         .nav-toggle:checked + .menu-icon + .trigger {
@@ -158,6 +179,18 @@
             visibility: visible;
             pointer-events: auto;
             transform: translateY(0);
+        }
+
+        .nav-toggle:checked + .menu-icon .menu-icon-bar:nth-child(1) {
+            transform: translateY(5px) rotate(45deg);
+        }
+
+        .nav-toggle:checked + .menu-icon .menu-icon-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle:checked + .menu-icon .menu-icon-bar:nth-child(3) {
+            transform: translateY(-5px) rotate(-45deg);
         }
     }
 }
@@ -204,9 +237,26 @@
 }
 
 .theme-mode-chevron {
-    font-size: 1.20rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
     color: var(--text-muted);
     transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-mode-chevron-icon {
+    width: 12px;
+    height: 12px;
+
+    path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
 }
 
 .theme-mode-button[aria-expanded="true"] .theme-mode-chevron {
@@ -309,12 +359,16 @@
         min-width: 94px;
         font-size: 0.82rem;
         padding: 6px 8px;
+        height: 34px;
         min-height: 34px;
+        box-sizing: border-box;
     }
 
     .site-nav .menu-icon {
-        min-width: 32px;
-        min-height: 32px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        box-sizing: border-box;
     }
 
     .theme-mode-menu {
@@ -340,16 +394,20 @@
         gap: 6px;
         padding: 6px 7px;
         font-size: 0.78rem;
+        height: 32px;
         min-height: 32px;
+        box-sizing: border-box;
     }
 
     .site-nav .menu-icon {
-        min-width: 30px;
-        min-height: 30px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        box-sizing: border-box;
 
-        > svg {
+        .menu-icon-bars {
             width: 15px;
-            height: 12px;
+            height: 11px;
         }
     }
 
@@ -386,7 +444,8 @@ body.party-mode .post,
 body.party-mode .highlight,
 body.party-mode .post-list > li,
 body.party-mode .archive-list li,
-body.party-mode .theme-mode-button {
+body.party-mode .theme-mode-button,
+body.party-mode .site-nav .menu-icon {
     position: relative;
     isolation: isolate;
     border-color: transparent;
@@ -404,6 +463,7 @@ body.party-mode .highlight::before,
 body.party-mode .post-list > li::before,
 body.party-mode .archive-list li::before,
 body.party-mode .theme-mode-button::before,
+body.party-mode .site-nav .menu-icon::before,
 body.party-mode .theme-mode-menu::before {
     content: "";
     position: absolute;
@@ -438,6 +498,7 @@ body.party-mode .highlight::after,
 body.party-mode .post-list > li::after,
 body.party-mode .archive-list li::after,
 body.party-mode .theme-mode-button::after,
+body.party-mode .site-nav .menu-icon::after,
 body.party-mode .theme-mode-menu::after {
     content: "";
     position: absolute;

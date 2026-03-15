@@ -3,6 +3,7 @@
   const currentLabel = document.getElementById("theme-mode-current");
   const menu = document.getElementById("theme-mode-menu");
   const options = Array.from(document.querySelectorAll(".theme-mode-option"));
+  const pageLinks = Array.from(document.querySelectorAll(".site-nav .page-link"));
   const navToggle = document.getElementById("nav-toggle");
   const themeControl = document.querySelector(".theme-mode-control");
   const siteNav = document.querySelector(".site-nav");
@@ -22,6 +23,56 @@
   const isValidMode = (mode) => MODES.includes(mode);
 
   const capitalize = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+
+  const normalizePath = (path) => {
+    if (!path) {
+      return "/";
+    }
+
+    let normalized = decodeURIComponent(path).split("?")[0].split("#")[0];
+
+    if (normalized.endsWith("/index.html")) {
+      normalized = normalized.slice(0, -"/index.html".length) || "/";
+    }
+
+    if (normalized.length > 1 && normalized.endsWith("/")) {
+      normalized = normalized.slice(0, -1);
+    }
+
+    return normalized.toLowerCase() || "/";
+  };
+
+  const markActiveNavLink = () => {
+    if (pageLinks.length === 0) {
+      return;
+    }
+
+    const currentPath = normalizePath(window.location.pathname);
+    const knownTopLevelPaths = ["/", "/about", "/résumé", "/post index"];
+
+    pageLinks.forEach((link) => {
+      const linkPath = normalizePath(new URL(link.href, window.location.origin).pathname);
+      const isSectionMatch =
+        linkPath !== "/" &&
+        (currentPath === linkPath || currentPath.startsWith(`${linkPath}/`));
+
+      const isBlogPostPath = /^\/\d{4}\//.test(currentPath);
+      const isBlogFallback =
+        link.textContent &&
+        link.textContent.trim().toLowerCase() === "blog" &&
+        isBlogPostPath &&
+        !knownTopLevelPaths.some((path) => currentPath === path || currentPath.startsWith(`${path}/`));
+
+      const isActive = currentPath === linkPath || isSectionMatch || isBlogFallback;
+
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
 
   const getInitialMode = () => {
     const storedMode = localStorage.getItem(MODE_KEY);
@@ -119,6 +170,7 @@
 
   let activeMode = getInitialMode();
   applyMode(activeMode);
+  markActiveNavLink();
 
   button.addEventListener("click", function () {
     if (menu.classList.contains("is-open")) {
@@ -179,6 +231,10 @@
   }
 
   document.addEventListener("click", function (event) {
+    if (navToggle && siteNav && navToggle.checked && !siteNav.contains(event.target)) {
+      closeNavMenu();
+    }
+
     if (!menu.contains(event.target) && !button.contains(event.target)) {
       closeMenu();
     }
@@ -187,6 +243,7 @@
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       closeMenu();
+      closeNavMenu();
     }
   });
 })();
