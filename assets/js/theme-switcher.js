@@ -3,6 +3,9 @@
   const currentLabel = document.getElementById("theme-mode-current");
   const menu = document.getElementById("theme-mode-menu");
   const options = Array.from(document.querySelectorAll(".theme-mode-option"));
+  const navToggle = document.getElementById("nav-toggle");
+  const themeControl = document.querySelector(".theme-mode-control");
+  const siteNav = document.querySelector(".site-nav");
   const modal = document.getElementById("party-warning-modal");
   const modalAccept = document.getElementById("party-warning-accept");
   const modalCancel = document.getElementById("party-warning-cancel");
@@ -38,7 +41,14 @@
     button.setAttribute("aria-expanded", "false");
   };
 
+  const closeNavMenu = () => {
+    if (navToggle) {
+      navToggle.checked = false;
+    }
+  };
+
   const openMenu = () => {
+    closeNavMenu();
     menu.classList.add("is-open");
     button.setAttribute("aria-expanded", "true");
   };
@@ -144,8 +154,29 @@
       activeMode = nextMode;
       applyMode(activeMode);
       closeMenu();
+      closeNavMenu();
     });
   });
+
+  if (navToggle) {
+    navToggle.addEventListener("change", function () {
+      if (navToggle.checked) {
+        closeMenu();
+      }
+    });
+  }
+
+  if (themeControl) {
+    themeControl.addEventListener("pointerdown", function () {
+      closeNavMenu();
+    });
+  }
+
+  if (siteNav) {
+    siteNav.addEventListener("pointerdown", function () {
+      closeMenu();
+    });
+  }
 
   document.addEventListener("click", function (event) {
     if (!menu.contains(event.target) && !button.contains(event.target)) {
