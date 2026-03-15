@@ -3,19 +3,57 @@ layout: default
 ---
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <section class="hero">
+    <h1 class="hero-title">Building practical systems and sharing the process.</h1>
+    <p class="hero-lead">
+      This site is a mix of technical writing, project context, and ongoing learning.
+      It keeps a running archive of posts while highlighting the bigger themes I work on.
+    </p>
+    <div class="hero-actions">
+      <a class="button-link primary" href="{{ site.baseurl }}/Post%20Index/">Read the Blog</a>
+      <a class="button-link" href="{{ site.baseurl }}/About/">About Me</a>
+      <a class="button-link" href="{{ site.baseurl }}/R%C3%A9sum%C3%A9/">View Résumé</a>
+    </div>
+  </section>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <section class="section-card">
+    <div class="home-section-header">
+      <h2>Focus Areas</h2>
+    </div>
+    <div class="highlights-grid home-section-body">
+      <article class="highlight">
+        <h3>Technical Writing</h3>
+        <p>Posts and notes on systems topics, implementation details, and key concepts.</p>
+      </article>
+      <article class="highlight">
+        <h3>Project Thinking</h3>
+        <p>Applied work that combines product ideas, engineering execution, and iteration.</p>
+      </article>
+      <article class="highlight">
+        <h3>Continuous Learning</h3>
+        <p>An evolving archive that tracks progress through coursework and practical projects.</p>
+      </article>
+    </div>
+  </section>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+  <section class="section-card">
+    <div class="home-section-header">
+      <h2>Recent Posts</h2>
+      <a href="{{ site.baseurl }}/Post%20Index/">View full archive</a>
+    </div>
+
+    <ul class="post-list home-section-body">
+      {% for post in site.posts limit: 4 %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+          <h3>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h3>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 

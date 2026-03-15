@@ -4,6 +4,9 @@ title: Résumé
 permalink: /Résumé/
 ---
 
-Below is a link to my Résumé. Please use the methods on the document or in the website footer to reach me. Feel free to contact me directly!
+Below is a link to my Résumé.
 
-[Tyler Bugbee]({{ tbarc.github.io }}/Tyler_Bugbee_Resume.pdf)
+Please use the contact methods listed on the document or in this site's footer to reach me.
+Feel free to contact me directly.
+
+[Open Résumé (PDF)]({{ site.baseurl }}/Tyler_Bugbee_Resume.pdf)

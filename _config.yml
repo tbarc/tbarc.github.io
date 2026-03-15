@@ -19,3 +19,8 @@ linkedin_username: tylerbugbee
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
+
+sass:
+  silence_deprecations:
+    - import
+    - global-builtin
