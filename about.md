@@ -13,4 +13,4 @@ Current topics across my writing include systems concepts, software projects,
 and practical engineering exploration.
 
 If you want a concise summary of my background, the best next stop is my
-[Résumé]({{ site.baseurl }}/R%C3%A9sum%C3%A9/).
+[Resume]({{ site.baseurl }}/Resume/).

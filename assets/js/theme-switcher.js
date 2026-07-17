@@ -48,7 +48,7 @@
     }
 
     const currentPath = normalizePath(window.location.pathname);
-    const knownTopLevelPaths = ["/", "/about", "/résumé", "/post index"];
+    const knownTopLevelPaths = ["/", "/about", "/resume", "/post index"];
 
     pageLinks.forEach((link) => {
       const linkPath = normalizePath(new URL(link.href, window.location.origin).pathname);
