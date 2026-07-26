@@ -909,8 +909,9 @@ body.party-mode .post-list > li::after {
 }
 
 .signature-logo {
-    width: 72px;
-    height: 72px;
+    width: 56px;
+    max-width: 56px;
+    height: auto;
     object-fit: contain;
 }
 
