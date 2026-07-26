@@ -895,6 +895,25 @@ body.party-mode .post-list > li::after {
     color: var(--text-muted);
 }
 
+.home-signature {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+}
+
+.signature-mark {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.signature-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
 
 /**
  * Archive pages
