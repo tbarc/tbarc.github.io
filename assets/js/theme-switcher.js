@@ -104,10 +104,14 @@
     button.setAttribute("aria-expanded", "true");
   };
 
-  const applyMode = (mode) => {
+  const applyMode = (mode, save = false) => {
     document.documentElement.setAttribute("data-theme", mode);
     document.body.classList.toggle("party-mode", mode === "party");
-    localStorage.setItem(MODE_KEY, mode);
+
+    if (save) {
+      localStorage.setItem(MODE_KEY, mode);
+    }
+
     currentLabel.textContent = capitalize(mode);
 
     options.forEach((option) => {
@@ -121,7 +125,7 @@
     if (!modal || !modalAccept || !modalCancel) {
       return Promise.resolve(
         window.confirm(
-          "⚠️ EPILEPSY WARNING\n\nParty Mode uses animated, color-cycling visual effects that may trigger seizures for people with photosensitive epilepsy.\n\nOnly continue if you understand this risk and want to enable Party Mode."
+          "⚠️ EPILEPSY WARNING\n\nParty Mode uses animated, color-cycling visual effects that may trigger seizures for people with photosensitive epilepsy.\n\nOnly continue if you understand this risk and want to enable Party Mode.\n\nIf you continue, this site will remember your acknowledgment and selected theme in your browser so you won’t see this warning each time. This information is not sent to us or used for tracking."
         )
       );
     }
@@ -204,7 +208,7 @@
       }
 
       activeMode = nextMode;
-      applyMode(activeMode);
+      applyMode(activeMode, true);
       closeMenu();
       closeNavMenu();
     });
